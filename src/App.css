@@ -1,0 +1,62 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200vh;
+  background-color: azure;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.post {
+  width: 400px;
+  position: relative;
+  margin-top: 3%;
+  background-color: azure;
+}
+.post-title {
+  font-size: 30px;
+  color: blueviolet;
+}
+
+.post-body {
+  font-size: 25px;
+  color: aqua;
+}
+
+.comment-name {
+  color: blue;
+}
+
+.comment-body {
+  color: red;
+}
+
+.user {
+  width: 400px;
+  position: relative;
+  margin-top: 3%;
+  background-color: azure;
+}
+.user-name {
+  font-size: 25px;
+}
+.user-username {
+  font-size: 30px;
+}
+.user-email {
+  font-size: 25px;
+}
+
+.button {
+  outline: none;
+}
+/*.button {
+  margin: 20px auto;
+  color: white;
+  background: #333;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #3333;
+  outline: none;
+}*/
