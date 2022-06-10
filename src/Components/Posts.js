@@ -10,7 +10,7 @@ const Posts = () => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((Posts) => Posts.json())
       .then((Posts) => {
-        setFilteredPosts(Posts.filter((Post) => Post.userId === 1));
+        setFilteredPosts(Posts.filter((Post) => Post.userId == id));
         console.log(filteredposts);
       });
 
