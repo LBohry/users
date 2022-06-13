@@ -18,14 +18,14 @@ const Post = ({ post }) => {
 
   return (
     <div className="post" key={post.id}>
-      <h2>Post</h2>
+      <h1>Post : </h1>
 
       <div className="post-title">{post.title}</div>
 
       <div className="post-body">{post.body}</div>
 
       <div className="comments">
-        <h2>Comments</h2>
+        <h4>Comments : </h4>
         {filteredcomments.map((commenti) => (
           <Comment comment={commenti} key={commenti.id} />
         ))}
