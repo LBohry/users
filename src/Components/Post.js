@@ -1,34 +1,51 @@
 import "../App.css";
 import Comment from "./Comment";
 import { useState, useEffect } from "react";
+import { Button } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Post = ({ post }) => {
-  const [filteredcomments, setFilteredComments] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [user, setUser] = useState([]);
 
+  let navigate = useNavigate();
+  let { postid, id } = useParams();
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/comments")
-      .then((comments) => comments.json())
-      .then((comments) => {
-        setFilteredComments(
-          comments.filter((comment) => comment.postId === post.id)
-        );
+    fetch(`http://localhost:4000/comments/bypost/${post._id}`)
+      .then((Comments) => Comments.json())
+      .then((Comments) => {
+        setComments(Comments);
+      });
+
+    fetch(`http://localhost:4000/users/${id}`)
+      .then((user) => user.json())
+      .then((user) => {
+        setUser(user);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="post" key={post.id}>
+    <div className="post" key={post._id}>
       <h1>Post : </h1>
 
       <div className="post-title">{post.title}</div>
 
-      <div className="post-body">{post.body}</div>
+      <div className="post-body">{post.post_body}</div>
 
       <div className="comments">
         <h4>Comments : </h4>
-        {filteredcomments.map((commenti) => (
-          <Comment comment={commenti} key={commenti.id} />
+        {comments.map((commenti) => (
+          <Comment comment={commenti} key={commenti._id} />
         ))}
+        <Button
+          variant="contained"
+          onClick={() => {
+            navigate(`/Posts/${id}/NewComment/${post._id}/${user.username}`);
+          }}
+        >
+          Add Comment
+        </Button>
       </div>
     </div>
   );

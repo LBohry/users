@@ -4,9 +4,10 @@ import { Button } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 const User = ({ user }) => {
   let navigate = useNavigate();
-  const id = user.id;
+  const id = user._id;
+  const username = user.username;
   return (
-    <div className="user" key={user.id}>
+    <div className="user" key={user._id}>
       <div className="user-rightside">
         <div className="user-username">{user.username}</div>
         <div className="user-name">{user.name}</div>
@@ -27,9 +28,15 @@ const User = ({ user }) => {
         >
           See Posts
         </Button>
-        {() => {
-          navigate(`/Posts/${id}`);
-        }}
+
+        <Button
+          variant="contained"
+          onClick={() => {
+            navigate(`/Posts/NewPost/${id}`);
+          }}
+        >
+          Add Post
+        </Button>
       </div>
     </div>
   );

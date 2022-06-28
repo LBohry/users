@@ -6,7 +6,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch("http://localhost:4000/users")
       .then((users) => users.json())
       .then((users) => {
         setUsers(users);
@@ -15,8 +15,10 @@ const Users = () => {
 
   return (
     <div className="App">
+      <h1>Users</h1>
+
       {users.map((useri) => (
-        <User user={useri} key={useri.id} />
+        <User user={useri} key={useri._id} />
       ))}
     </div>
   );
