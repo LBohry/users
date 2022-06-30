@@ -9,7 +9,7 @@ const Post = ({ post }) => {
   const [user, setUser] = useState([]);
 
   let navigate = useNavigate();
-  let { postid, id } = useParams();
+  let { id } = useParams();
   useEffect(() => {
     fetch(`http://localhost:4000/comments/bypost/${post._id}`)
       .then((Comments) => Comments.json())
@@ -27,8 +27,25 @@ const Post = ({ post }) => {
 
   return (
     <div className="post" key={post._id}>
-      <h1>Post : </h1>
-
+      <div className="head">
+        <h1>Post : </h1>
+        <Button
+          variant="contained"
+          onClick={() => {
+            navigate(`/Posts/${id}/${post._id}/patchpost`);
+          }}
+        >
+          Edit
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            navigate(`/Posts/${id}/${post._id}/deletepost`);
+          }}
+        >
+          Delete
+        </Button>
+      </div>
       <div className="post-title">{post.title}</div>
 
       <div className="post-body">{post.post_body}</div>

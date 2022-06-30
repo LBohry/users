@@ -102,3 +102,12 @@ input[type="text"]:last-child {
   margin: 8px 0;
   box-sizing: border-box;
 }
+
+.head {
+  display: flex;
+}
+
+.head h1 {
+}
+.head Button {
+}
